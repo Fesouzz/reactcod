@@ -52,18 +52,29 @@
 
 body {
   margin: 0;
+  /* Aplica o degradê vermelho minimalista de fundo usando variáveis de opacidade */
+  background: linear-gradient(135deg, #ffeef0 0%, #ffd6da 50%, #fcdad7 100%);
+  min-height: 100vh;
 }
 
+/* Força o Dark Mode no degradê caso o usuário use o tema escuro do sistema */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: linear-gradient(135deg, #241214 0%, #1a1112 100%);
+  }
+}
+
+/* Ajustado o #root para centralizar o contêiner do tempo perfeitamente */
 #root {
-  width: 1126px;
+  width: 100%;
   max-width: 100%;
   margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   box-sizing: border-box;
+  padding: 20px;
 }
 
 h1,
@@ -73,24 +84,19 @@ h2 {
   color: var(--text-h);
 }
 
+/* Reset de tamanhos para caberem de forma elegante na caixinha */
 h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
+  font-size: 1.35rem;
+  letter-spacing: -0.5px;
+  margin: 0 0 24px 0;
 }
+
 h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
+  font-size: 1.05rem;
+  line-height: 120%;
+  margin: 0 0 14px 0;
 }
+
 p {
   margin: 0;
 }

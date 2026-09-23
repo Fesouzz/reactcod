@@ -1,3 +1,6 @@
+//Importa o css 
+import "./App.css"
+
 //Importando hook useState da biblioteca React
 //Ele permite armazenar valores e atualizar 
 // valores automaticamente
@@ -17,58 +20,42 @@ function App(){
   // Estado responsável por armazenar a umidade digitada
   const [umidade, setUmidade] = useState("");
   
-  //Funão executada quando o usuário clicar no botão consultar
-  function consultarClima () {
+  //função executada quando o usuário clicar no botão "consultar"
+  async function consultarClima() {
+    if(cidade === ""){
+      alert("digite uma cidade!");
+      return;
+    }
+    try{
+
+      // Faz a requisição para a API
+      const resposta = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=99bc9bea7ae65b241e69ca4329a1ee01&units=metric&lang=pt_br`
+    );
+ 
+      // Converte a resposta para json
+      const dados = await resposta.json();
+
+      // Verifica se a cidade foi encontrada
+      if (dados.cod !== 200){
+        alert ("cidade não encontrada!");
+        return;
+      }
+
+      //Atualiza a temperatura
+      setTemperatura(dados.main.temp + "°C");
+
+      //Atualiza a condição climática
+      setClima(dados.weather[0].description);
+
+      setUmidade(dados.main.humidity + "%");
+    }catch (erro){
+      console.log(erro);
+      alert("Erro ao consultar a API.");
+    }
+  }
+    
   
-  // Verifica se a cidade digitada é são paulo
-    if (
-    cidade.toLowerCase() === "são paulo" || 
-    cidade.toLowerCase() === "são paulo" 
-  ) {
-
-    //Atualiza a temperatura
-     setTemperatura("24°C");
-    
-     //Atualiza o clima
-     setClima("Ensolarado");
-    
-     //Atualiza a umidade
-     setUmidade("60%");
-  }
-  else if (cidade.toLowerCase() === "curitiba"){
-
-    setTemperatura("17°");
-
-    setClima("Chuvoso");
-
-    setUmidade("85%")
-  }
-  else if (cidade.toLowerCase() === "recife"){
-
-    setTemperatura("30°");
-
-    setClima("Ensolarado");
-
-    setUmidade("45%")
-  }
-    else if (cidade.toLowerCase() === "rio grande do sul"){
-
-    setTemperatura("9°");
-
-    setClima("Chuvoso");
-
-    setUmidade("95%")
-  }
-
-else {
-
-  setTemperatura ("---");
-  setClima ("cidade não encontrada");
-  setUmidade ("--");
-}
-
-  }
-
 //retorna a interface visual do sistema
 return (
 
@@ -115,14 +102,15 @@ return (
   {/*Exibe a cidade informada */}
     <h2>Cidade: {cidade}</h2>
 
+
   {/*Exibe a temperatura informada */}
-    <h2>Cidade: {temperatura}</h2>
+    <h2>Temperatura: {temperatura}</h2>
     
     {/*Exibe condição climática */}
-    <h2>Cidade: {clima}</h2>
+    <h2>Clima: {clima}</h2>
 
     {/*Exibe a umidade */}
-    <h2>Cidade: {umidade}</h2>
+    <h2>Umidade: {umidade}</h2>
 
 </div>
 )
