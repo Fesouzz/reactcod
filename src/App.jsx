@@ -49,7 +49,7 @@ function App(){
       setClima(dados.weather[0].description);
 
       setUmidade(dados.main.humidity + "%");
-
+ 
       //CONTEÚDO DA AULA 29/09
       //Enviando dados do React para uma API própria utilizando o método post
 
