@@ -49,6 +49,43 @@ function App(){
       setClima(dados.weather[0].description);
 
       setUmidade(dados.main.humidity + "%");
+
+      //CONTEÚDO DA AULA 29/09
+      //Enviando dados do React para uma API própria utilizando o método post
+
+      // Faz a requisção para a API de histórico criada por você
+      await fetch ("http://localhost:3000/historico", {
+        
+        //Define o método HTTP utilizado
+        method: "POST",
+
+        //Informa que os dados enviados estrão em formato json
+        headers: {
+          "Content-Type": "application/json"
+        }, 
+
+        //Converte o objeto Javascript para JSON
+        body: JSON.stringify({
+          
+          //Envia o nome da cidade consultada
+          cidade: cidade,
+
+          //Envia a temperatura retornada pela API OpenWeatherMap
+          temperatura: dados.main.temp + "°C",
+
+          //Envia a descrição do clima
+          //O índice [0] acessa o primeiro elemento do array "weather"
+          //Um array é uma lista de valores armazenados em sequência e acessados por posição
+          clima: dados.weather[0].description,
+
+          //Envia a umidade do ar
+          umidade: dados.main.humidity + "%",
+
+        })
+      });
+
+      //Fim da primeira aula
+
     }catch (erro){
       console.log(erro);
       alert("Erro ao consultar a API.");
