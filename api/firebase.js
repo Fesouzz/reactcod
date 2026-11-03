@@ -14,25 +14,28 @@ import {getDatabase} from "firebase/database";
 
 const firebaseConfig = {
     //Identificador único do aplicativo
-    apiKey: "AIzaSyCw92u6LEPV3NVELQnxZ0P50IimdH1zCeE",
+    apiKey: "AIzaSyC2paOuueK7Kb-eZ0CHi4YsWqf0-k8VuSY",
 
     //Domínio de autentiçação do projeto
-     authDomain: "dbaulareact-5c68a.firebaseapp.com",
+     authDomain: "dbaulareact-7eb1c.firebaseapp.com",
 
      //Endereço do Realtime Database
-     databaseURL: "https://dbaulareact-5c68a-default-rtdb.firebaseio.com",
+     databaseURL: "https://dbaulareact-7eb1c-default-rtdb.firebaseio.com",
     
      //Identificador do projeto Firebase
-     projectId: "dbaulareact-5c68a",
+     projectId: "dbaulareact-7eb1c",
 
      //Seviço de armazenamento de arquivos
-     storageBucket: "dbaulareact-5c68a.firebasestorage.app",
+     storageBucket: "dbaulareact-7eb1c.firebasestorage.app",
 
      //Identificador responsável pela troca de mensagens
-     messagingSenderId: "1056394127795",
+     messagingSenderId: "93784514903",
 
      //Identificador único da aplicação web
-     appId: "1:1056394127795:web:ba4dd012630eb6459483c6"
+     appId: "1:93784514903:web:c9a415360e17daa7f49e12",
+
+     //Identificador utilizado pelo google analytics
+     measurementId: "G-YJ1DR6W2L0"
 };
 
 //Inicialização do Firebase utilizando as configurações acima
